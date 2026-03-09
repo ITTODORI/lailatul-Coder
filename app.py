@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify #pip install flask flask-cors psutil
 from flask_cors import CORS
 import psutil
 
