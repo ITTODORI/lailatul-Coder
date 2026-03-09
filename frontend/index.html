@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Health Monitor - Dashboard</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Chart.js untuk visualisasi data -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">🖥️ System Health Monitor</h1>
+                <p class="subtitle">Real-time Performance Dashboard</p>
+            </div>
+            <div class="status-indicator">
+                <span id="connectionStatus" class="status-dot"></span>
+                <span id="statusText">Connecting...</span>
+            </div>
+        </header>
+
+        <!-- Main Dashboard -->
+        <main class="main-content">
+            <!-- Stats Cards Section -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <!-- CPU Card -->
+                    <div class="stat-card cpu-card">
+                        <div class="stat-header">
+                            <h3>CPU Usage</h3>
+                            <span class="stat-icon">⚡</span>
+                        </div>
+                        <div class="stat-value">
+                            <span id="cpuValue" class="value">--</span>
+                            <span class="unit">%</span>
+                        </div>
+                        <div class="stat-progress">
+                            <div id="cpuProgress" class="progress-bar"></div>
+                        </div>
+                        <p class="stat-description">Processor utilization</p>
+                    </div>
+
+                    <!-- RAM Card -->
+                    <div class="stat-card ram-card">
+                        <div class="stat-header">
+                            <h3>RAM Usage</h3>
+                            <span class="stat-icon">💾</span>
+                        </div>
+                        <div class="stat-value">
+                            <span id="ramValue" class="value">--</span>
+                            <span class="unit">%</span>
+                        </div>
+                        <div class="stat-progress">
+                            <div id="ramProgress" class="progress-bar"></div>
+                        </div>
+                        <p class="stat-description">Memory utilization</p>
+                    </div>
+
+                    <!-- System Status Card -->
+                    <div class="stat-card status-card">
+                        <div class="stat-header">
+                            <h3>System Status</h3>
+                            <span class="stat-icon">✅</span>
+                        </div>
+                        <div class="system-status">
+                            <p id="systemHealthText" class="health-text">Healthy</p>
+                            <p id="lastUpdate" class="last-update">Updated: just now</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="chart-container">
+                    <div class="chart-wrapper">
+                        <h3 class="chart-title">CPU Usage History (Last 10 readings)</h3>
+                        <div class="chart-inner">
+                            <canvas id="cpuChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-wrapper">
+                        <h3 class="chart-title">RAM Usage History (Last 10 readings)</h3>
+                        <div class="chart-inner">
+                            <canvas id="ramChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <div class="info-card">
+                    <h3>📊 Monitoring Information</h3>
+                    <ul class="info-list">
+                        <li>
+                            <strong>Refresh Rate:</strong> 
+                            <span id="refreshRate" class="info-value">2 seconds</span>
+                        </li>
+                        <li>
+                            <strong>API Endpoint:</strong> 
+                            <span class="info-value">/api/system-stats</span>
+                        </li>
+                        <li>
+                            <strong>Connection:</strong> 
+                            <span id="apiStatus" class="info-value">Active</span>
+                        </li>
+                        <li>
+                            <strong>Last Data Point:</strong> 
+                            <span id="dataPoints" class="info-value">0 readings</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>⚙️ Controls</h3>
+                    <div class="controls">
+                        <button id="pauseBtn" class="btn btn-primary">⏸️ Pause Monitoring</button>
+                        <button id="resetBtn" class="btn btn-secondary">🔄 Reset Data</button>
+                        <button id="refreshBtn" class="btn btn-tertiary">🔃 Refresh Now</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 System Health Monitor. Built with ❤️ using Flask & Chart.js</p>
+        </footer>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
