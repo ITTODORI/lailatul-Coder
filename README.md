@@ -196,7 +196,15 @@ MAX_DATA_POINTS = 10     // Maximum history points
 
 MIT License - Feel free to use this project
 
-## 👤 Author
+## � Additional Utilities
+
+This repository also contains a small "habits" helper under
+`Habits/`.  It provides a way to generate a series of daily commits
+for a few days (useful if you're trying to keep your GitHub activity
+streak going).  Run `python Habits/commit_habits.py` or enable
+the workflow at `.github/workflows/habit.yml`.
+
+## �👤 Author
 
 **lailatul-Coder**
 

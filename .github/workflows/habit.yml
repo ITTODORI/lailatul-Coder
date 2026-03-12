@@ -1,0 +1,23 @@
+name: Habit Commits
+
+on:
+  # run daily at midnight UTC; you can adjust to your timezone
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Append daily line
+        run: |
+          echo "Habit commit $(date)" >> Habits/habit_log.txt
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Habits/habit_log.txt
+          git commit -m "daily habit commit" || echo "no changes"
+          git push
